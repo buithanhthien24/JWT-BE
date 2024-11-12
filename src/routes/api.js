@@ -1,7 +1,7 @@
 const express = require("express");
 const req = require("express/lib/request");
 const res = require("express/lib/response");
-const delay = require("../middleware/delay");
+const auth = require("../middleware/auth");
 
 const {
   createUser,
@@ -11,7 +11,7 @@ const {
 
 const routerAPI = express.Router();
 
-routerAPI.all("*", delay);
+routerAPI.all("*", auth);
 
 routerAPI.get("/", (req, res) => {
   return res.status(200).json("Hello world API");
