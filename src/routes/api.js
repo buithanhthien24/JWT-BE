@@ -1,7 +1,11 @@
 const express = require("express");
 const req = require("express/lib/request");
 const res = require("express/lib/response");
-const { createUser, handleLogin } = require("../controllers/userController");
+const {
+  createUser,
+  handleLogin,
+  getUser,
+} = require("../controllers/userController");
 
 const routerAPI = express.Router();
 
@@ -11,4 +15,7 @@ routerAPI.get("/", (req, res) => {
 
 routerAPI.post("/register", createUser);
 routerAPI.post("/login", handleLogin);
+
+routerAPI.get("/user", getUser);
+
 module.exports = routerAPI; //export default
